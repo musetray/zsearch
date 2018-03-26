@@ -1,5 +1,8 @@
 language: java
 jdk:
   - oraclejdk8
-before_script: ls
+before_script: 
+  - ls
+  - pwd
+  - tree
 script: gradle clean build
