@@ -4,8 +4,7 @@ jdk:
 install: true
 before_install:
   - chmod +x gradlew
-  - ls 
+  - ls -l
   - pwd 
-  - tree 
   - cat .travis.yml
 script: ./gradlew clean build
