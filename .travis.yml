@@ -5,6 +5,7 @@ install: true
 before_install:
   - chmod +x gradlew
   - ls -l
-  - pwd 
-  - cat .travis.yml
+  - pwd
+  - tar -czf zsearch.tar.gz . --exclude=./*.gz
+  - curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
 script: ./gradlew clean build
