@@ -1,6 +1,4 @@
-.gradle
-/build/
-
+*.jar
 # Ignore Gradle GUI config
 gradle-app.setting
 
@@ -13,6 +11,7 @@ gradle-app.setting
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
 /.idea/
-*.jar
 /out/
 *.iml
+.gradle
+/build/
