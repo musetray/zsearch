@@ -4,8 +4,8 @@ jdk:
 install: true
 cache:
   directories:
-  - .autoconf
-  - $HOME/.m2
+  - .gradle
+  - gradle
 before_install:
   - chmod +x gradlew
   - ls -l
