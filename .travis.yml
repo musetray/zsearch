@@ -10,7 +10,6 @@ before_install:
   - chmod +x gradlew
   - ls -l
   - pwd
-  - touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz
-  - curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
+  - touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz && curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
 script: ./gradlew clean build
 after_script: touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz && curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz

@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: ru.muzetray.zsearch
+ribbon:
+  eureka:
+    enabled: false
+zapi:
+  url: http://zaycev.net/external
