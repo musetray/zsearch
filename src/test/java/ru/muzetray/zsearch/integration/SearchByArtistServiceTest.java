@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -15,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-
+@Slf4j
 public class SearchByArtistServiceTest {
 
 	@Autowired
@@ -26,26 +27,29 @@ public class SearchByArtistServiceTest {
 	@Test
 	public void testAutocomplete() {
 		JsonNode korn = api.autocomplete( "korn" );
-		System.out.println( korn.toString() );
+		log.info( "Response: {}", korn );
+
 	}
 
 	@Test
 	public void testArtist() {
 		JsonNode korn = api.artist( 1021L );
-		System.out.println( korn.toString() );
+		log.info( "Response: {}", korn );
+
 	}
 
 	@Test
 	public void getToken() {
 		String token = service.getToken();
+		log.info( "Response: {}", token );
+
 		assertThat( token ).isNotBlank();
-		System.out.println( token );
 	}
 
 	@Test
 	public void getOptions() {
 		JsonNode options = service.getOptions();
+		log.info( "Response: {}", options );
 		assertThat( options ).isNotNull();
-		System.out.println( options.toString() );
 	}
 }

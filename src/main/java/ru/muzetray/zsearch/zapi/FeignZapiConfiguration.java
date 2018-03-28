@@ -19,7 +19,7 @@ public class FeignZapiConfiguration {
 	@Bean
 	public RequestInterceptor loggingRequestInterceptor() {
 		return template ->
-				log.debug( "Requesting {}:{}", template.method(), template.url() );
+				log.info( "Requesting {}", template );
 
 	}
 

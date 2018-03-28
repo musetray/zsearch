@@ -6,3 +6,7 @@ ribbon:
     enabled: false
 zapi:
   url: http://zaycev.net/external
+logging:
+  level:
+    root: DEBUG
+debug: true
