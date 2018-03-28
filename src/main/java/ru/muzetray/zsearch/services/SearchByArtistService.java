@@ -101,12 +101,6 @@ public class SearchByArtistService {
 		paramString = localStringBuffer.toString();
 		return paramString;
 	}
-
-	@PostConstruct
-	public void runSome() {
-		api.artist( 1021l );
-	}
-
 	@Data
 	static class HelloResponse {
 		private String token;
