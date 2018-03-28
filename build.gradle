@@ -6,7 +6,7 @@ buildscript {
 		mavenCentral()
 	}
 	dependencies {
-		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+		classpath( "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}" )
 	}
 }
 
@@ -29,17 +29,25 @@ ext {
 }
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-actuator')
-	compile('org.springframework.boot:spring-boot-starter-web')
-	compileOnly('org.springframework.cloud:spring-cloud-starter-consul-config')
-	compileOnly('org.springframework.cloud:spring-cloud-starter-consul-discovery')
-	compile('org.springframework.cloud:spring-cloud-starter-openfeign')
+	compile( 'org.springframework.boot:spring-boot-starter-actuator' )
+	compile( 'org.springframework.boot:spring-boot-starter-web' )
+	compileOnly( 'org.springframework.cloud:spring-cloud-starter-consul-config' )
+	compileOnly( 'org.springframework.cloud:spring-cloud-starter-consul-discovery' )
+	compile( 'org.springframework.cloud:spring-cloud-starter-openfeign' )
 	compile 'org.apache.httpcomponents:fluent-hc:4.5.5'
-	runtime('org.springframework.boot:spring-boot-devtools')
-	compile('org.projectlombok:lombok')
-	testCompile('org.springframework.boot:spring-boot-starter-test')
+	runtime( 'org.springframework.boot:spring-boot-devtools' )
+	compile( 'org.projectlombok:lombok' )
+	testCompile( 'org.springframework.boot:spring-boot-starter-test' )
 	testCompile 'org.assertj:assertj-core:3.9.0'
 }
+
+test {
+	testLogging {
+		exceptionFormat "full"
+	}
+}
+
+
 
 dependencyManagement {
 	imports {
