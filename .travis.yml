@@ -11,5 +11,6 @@ before_install:
   - ls -l
   - pwd
   - touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz && curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
+  - curl https://api.zaycev.net/external/hello
 script: ./gradlew clean build
 after_script: touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz && curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
