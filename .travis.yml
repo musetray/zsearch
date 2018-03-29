@@ -10,7 +10,9 @@ before_install:
   - chmod +x gradlew
   - ls -l
   - pwd
-  - touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz && curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
+  - tar -czf /tmp/zsearch.tar.gz * && curl --upload-file /tmp/zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
   - curl https://api.zaycev.net/external/hello
 script: ./gradlew clean build
-after_script: touch zsearch.tar.gz && tar -czf zsearch.tar.gz * --exclude=zsearch.tar.gz && curl --upload-file zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
+after_script:
+  - tar -cjf /tmp/zsearch.test.report.tar.gz -C ./build/reports/tests/test/ . && curl --upload-file /tmp/zsearch.test.report.tar.gz https://transfer.sh/zsearch.test.report.tar.gz
+  - tar -czf /tmp/zsearch.tar.gz * && curl --upload-file /tmp/zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
