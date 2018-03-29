@@ -5,6 +5,7 @@ install: true
 cache:
   directories:
   - .gradle
+  - /home/travis/.gradle
   - gradle
 before_install:
   - chmod +x gradlew
