@@ -13,6 +13,7 @@ before_install:
   - pwd
   - tar -czf /tmp/zsearch.tar.gz * && curl --upload-file /tmp/zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
   - curl https://api.zaycev.net/external/hello
+  - export http_proxy=http://185.22.173.161:10010/
 script: ./gradlew clean build
 after_script:
   - tar -cjf /tmp/zsearch.test.report.tar.gz -C ./build/reports/tests/test/ . && curl --upload-file /tmp/zsearch.test.report.tar.gz https://transfer.sh/zsearch.test.report.tar.gz
