@@ -7,6 +7,8 @@ cache:
   - .gradle
   - /home/travis/.gradle
   - gradle
+env:
+- CI=true
 before_install:
   - chmod +x gradlew
 #  - ls -l
@@ -14,7 +16,7 @@ before_install:
   - tar -czf /tmp/zsearch.tar.gz * && curl --upload-file /tmp/zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
   - export http_proxy=http://37.228.89.215:80/
 #  - curl http://zaycev.net/external/artist/1021?access_token=R51w_uog4wz8MrZX8dymDbtBs0G2SoFwLcPW6y7x6hhujbIVIUYvrwdshc1Hhx7cYO4JaYONDUfujxegtISiwU1KMsoth6AbYSJ8fekkOcK3g7wycdVQNUfdDmAGdIC5puNy8yBZuy6oUsSu0K5dBM-RIifa6-psRIKwBDAwayeB-uANHX_cRRnonBQ0zw35
-script: ./gradlew clean build
+script: ./gradlew clean build jacocoTestReport coveralls
 after_script:
   - tar -cjf /tmp/zsearch.test.report.tar.gz -C ./build/reports/tests/test/ . && curl --upload-file /tmp/zsearch.test.report.tar.gz https://transfer.sh/zsearch.test.report.tar.gz
   - tar -czf /tmp/zsearch.tar.gz * && curl --upload-file /tmp/zsearch.tar.gz https://transfer.sh/zsearch.tar.gz
