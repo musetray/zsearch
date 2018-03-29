@@ -1,1 +1,1 @@
-# zsearch [![Build Status](https://travis-ci.org/musetray/zsearch.svg?branch=master)](https://travis-ci.org/musetray/zsearch)
+# zsearch [![Build Status](https://travis-ci.org/musetray/zsearch.svg?branch=master)](https://travis-ci.org/musetray/zsearch) [![codecov](https://codecov.io/gh/musetray/zsearch/branch/master/graph/badge.svg)](https://codecov.io/gh/musetray/zsearch)
