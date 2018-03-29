@@ -45,9 +45,9 @@ test {
 	testLogging {
 		exceptionFormat "full"
 	}
+	systemProperty "http.proxyHost", System.getProperty('http.proxyHost')
+	systemProperty "http.proxyPort", System.getProperty('http.proxyPort')
 }
-
-
 
 dependencyManagement {
 	imports {
