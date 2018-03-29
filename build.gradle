@@ -12,7 +12,6 @@ plugins {
     id 'org.springframework.boot' version "2.0.0.RELEASE"
     id 'io.spring.dependency-management' version "1.0.4.RELEASE"
     id 'jacoco'
-    id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
 group = 'ru.musetray'
