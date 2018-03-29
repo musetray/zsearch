@@ -1,6 +1,11 @@
 package ru.muzetray.zsearch.services;
 
 
+import java.io.File;
+import java.io.InputStream;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.security.MessageDigest;
 import java.util.Collections;
 import java.util.HashMap;
@@ -13,14 +18,12 @@ import lombok.Data;
 import lombok.SneakyThrows;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
-import ru.muzetray.zsearch.zapi.ZApi;
 
 @Service
 @AllArgsConstructor
 public class SearchByArtistService {
 
 	private static final String apkSecret = d( "llf7116f22c" );
-	private ZApi api;
 
 	private RestTemplate requestTemplate;
 
@@ -59,6 +62,15 @@ public class SearchByArtistService {
 		return Collections.emptyList();
 	}
 
+	@SneakyThrows
+	public void downloadFile(String url) {
+		URL website = new URL(url);
+		try (InputStream in = website.openStream()) {
+			File file = File.createTempFile("asd", ".mp3");
+			Files.copy(in, file.toPath(), StandardCopyOption.REPLACE_EXISTING);
+		}
+	}
+
 	public String getToken() {
 		String token = requestTemplate.getForObject(
 				"https://api.zaycev.net/external/hello",
@@ -79,9 +91,6 @@ public class SearchByArtistService {
 		return node.get( "token" ).asText();
 	}
 
-	public JsonNode getOptions() {
-		return api.options();
-	}
 
 	@SneakyThrows
 	public final String b(String paramString) {

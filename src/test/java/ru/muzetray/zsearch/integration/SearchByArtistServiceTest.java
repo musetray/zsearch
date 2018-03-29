@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import ru.muzetray.zsearch.services.SearchByArtistService;
-import ru.muzetray.zsearch.zapi.ZApi;
+import ru.muzetray.zsearch.zapi.ZaycevApi;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -22,7 +22,7 @@ public class SearchByArtistServiceTest {
 	@Autowired
 	private SearchByArtistService service;
 	@Autowired
-	private ZApi api;
+	private ZaycevApi api;
 
 	@Test
 	public void testAutocomplete() {
@@ -33,9 +33,8 @@ public class SearchByArtistServiceTest {
 
 	@Test
 	public void testArtist() {
-		JsonNode korn = api.artist( 1021L );
-		log.info( "Response: {}", korn );
-
+		 ZaycevApi.ArtistResponse artist = api.artist(1021L);
+        assertThat(artist.getArtist().getName()).isEqualTo("30 Seconds to Mars");
 	}
 
 	@Test
@@ -48,8 +47,15 @@ public class SearchByArtistServiceTest {
 
 	@Test
 	public void getOptions() {
-		JsonNode options = service.getOptions();
+        ZaycevApi.OptionsResponse options = api.options();
 		log.info( "Response: {}", options );
 		assertThat( options ).isNotNull();
 	}
+	 @Test
+    public void getDownloadUrl() {
+        ZaycevApi.TrackPlayResponse response = api.trackPlay(7069942L);
+        assertThat(response.url).endsWith(".mp3");
+
+        service.downloadFile(response.url);
+    }
 }

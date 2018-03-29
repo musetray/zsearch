@@ -1,12 +1,13 @@
 package ru.muzetray.zsearch.zapi;
 
+import feign.Logger;
 import feign.RequestInterceptor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 
 @Slf4j
-public class FeignZapiConfiguration {
+public class FeignZaycevApiConfiguration {
 
 	@Bean
 	public RequestInterceptor accessTokenAuthRequestInterceptor(@Lazy TokenStore store) {
@@ -16,11 +17,12 @@ public class FeignZapiConfiguration {
 		};
 	}
 
-	@Bean
-	public RequestInterceptor loggingRequestInterceptor() {
-		return template ->
-				log.info( "Requesting {}", template );
-
-	}
-
+    @Bean
+    public RequestInterceptor requestLogInterceptor() {
+        return template -> log.info("FeignZaycevApi Request: {}", template);
+    }
+    @Bean
+    Logger.Level feignLoggerLevel() {
+        return Logger.Level.FULL;
+    }
 }
